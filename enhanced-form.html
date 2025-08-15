@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Enhanced HTML5 Form – Accessibility & Validation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A semantic HTML5 page featuring lists, tables, media, and an accessible, validation-ready form using modern attributes." />
+</head>
+<body>
+  <header>
+    <h1>Registration & Preferences</h1>
+    <nav aria-label="Page">
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#features-list">Features</a></li>
+        <li><a href="#pricing-table">Pricing Table</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#form">Sign-Up Form</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="overview">
+    <article>
+      <h2>Overview</h2>
+      <p>This page demonstrates a clean HTML5 structure, accessible content, and a fully featured form with built-in validation and helpful attributes.</p>
+    </article>
+
+    <section id="features-list" aria-labelledby="features-heading">
+      <h2 id="features-heading">Key Features</h2>
+      <ul>
+        <li>Semantic landmarks for screen readers</li>
+        <li>Native HTML5 validation (no scripts)</li>
+        <li>Clear labels and instructions</li>
+      </ul>
+
+      <h3>Form Sections</h3>
+      <ol>
+        <li>Account Details</li>
+        <li>Profile & Contact</li>
+        <li>Preferences</li>
+        <li>Agreements & Submit</li>
+      </ol>
+
+      <h3>Helpful Terms</h3>
+      <dl>
+        <dt>Required</dt>
+        <dd>Fields that must be filled before submission.</dd>
+        <dt>Autocomplete</dt>
+        <dd>Hints that help browsers fill values consistently.</dd>
+        <dt>Pattern</dt>
+        <dd>Regular expression used to validate input format.</dd>
+      </dl>
+    </section>
+
+    <aside aria-labelledby="tip-heading">
+      <h2 id="tip-heading">Tip</h2>
+      <p>Use the <em>tab</em> key to move between fields. Labels are clickable for easy focus.</p>
+    </aside>
+
+    <section id="pricing-table" aria-labelledby="pricing-heading">
+      <h2 id="pricing-heading">Pricing Comparison</h2>
+      <table>
+        <caption>Plans at a glance</caption>
+        <thead>
+          <tr>
+            <th scope="col">Plan</th>
+            <th scope="col">Users</th>
+            <th scope="col">Storage</th>
+            <th scope="col">Monthly</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Starter</th>
+            <td>1</td>
+            <td>5 GB</td>
+            <td>$0</td>
+          </tr>
+          <tr>
+            <th scope="row">Pro</th>
+            <td>5</td>
+            <td>100 GB</td>
+            <td>$19</td>
+          </tr>
+          <tr>
+            <th scope="row">Team</th>
+            <td>20</td>
+            <td>1 TB</td>
+            <td>$49</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="media" aria-labelledby="media-heading">
+      <h2 id="media-heading">Media</h2>
+      <figure>
+        <img src="https://via.placeholder.com/640x360" alt="Illustration of people collaborating online" width="640" height="360" />
+        <figcaption>Collaboration made simple.</figcaption>
+      </figure>
+
+      <figure>
+        <audio controls>
+          <source src="sample-audio.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <figcaption>Short audio introduction.</figcaption>
+      </figure>
+
+      <figure>
+        <video controls width="480">
+          <source src="sample-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <figcaption>Quick product overview (video).</figcaption>
+      </figure>
+    </section>
+
+    <!-- Complete HTML5 Form -->
+    <section id="form" aria-labelledby="form-heading">
+      <h2 id="form-heading">Sign-Up Form</h2>
+      <p id="form-help">All fields marked with <strong>*</strong> are required. Your data will be used according to our privacy policy.</p>
+
+      <form action="/submit" method="post" aria-describedby="form-help">
+        <!-- Hidden/readonly examples -->
+        <input type="hidden" name="form-version" value="v1.0" />
+        <p>
+          <label for="user-id">User ID (readonly)</label><br />
+          <input id="user-id" name="user-id" type="text" value="USR-2025-001" readonly />
+        </p>
+
+        <fieldset>
+          <legend>1) Account Details</legend>
+
+          <p>
+            <label for="email">Email <strong>*</strong></label><br />
+            <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+          </p>
+
+          <p>
+            <label for="password">Password <strong>*</strong></label><br />
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="At least 8 characters"
+              minlength="8"
+              autocomplete="new-password"
+              required
+            />
+          </p>
+
+          <p>
+            <label for="confirm">Confirm Password <strong>*</strong></label><br />
+            <input
+              id="confirm"
+              name="confirm"
+              type="password"
+              placeholder="Re-enter your password"
+              minlength="8"
+              autocomplete="new-password"
+              required
+            />
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>2) Profile &amp; Contact</legend>
+
+          <p>
+            <label for="full-name">Full Name <strong>*</strong></label><br />
+            <input id="full-name" name="full-name" type="text" placeholder="First Last" autocomplete="name" required />
+          </p>
+
+          <p>
+            <label for="username">Username <strong>*</strong></label><br />
+            <input
+              id="username"
+              name="username"
+              type="text"
+              placeholder="letters, numbers, hyphens"
+              pattern="^[a-zA-Z0-9-]{3,20}$"
+              title="3–20 characters: letters, numbers, hyphens"
+              autocomplete="username"
+              required
+            />
+          </p>
+
+          <p>
+            <label for="phone">Phone <strong>*</strong></label><br />
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder="+251-900-000000"
+              pattern="^\+?[0-9\- ]{7,18}$"
+              title="Use digits, spaces, or hyphens (optionally start with +)"
+              autocomplete="tel"
+              required
+            />
+          </p>
+
+          <p>
+            <label for="website">Website</label><br />
+            <input id="website" name="website" type="url" placeholder="https://example.com" autocomplete="url" />
+          </p>
+
+          <p>
+            <label for="birthdate">Date of Birth <strong>*</strong></label><br />
+            <input id="birthdate" name="birthdate" type="date" required />
+          </p>
+
+          <p>
+            <label for="meet-time">Preferred Meeting Time</label><br />
+            <input id="meet-time" name="meet-time" type="time" />
+          </p>
+
+          <p>
+            <label for="timezone">Time Zone</label><br />
+            <select id="timezone" name="timezone" autocomplete="off">
+              <option value="">Select a time zone</option>
+              <option value="Africa/Addis_Ababa">Africa/Addis_Ababa (UTC+03:00)</option>
+              <option value="Europe/London">Europe/London (UTC±00:00)</option>
+              <option value="America/New_York">America/New_York (UTC−05:00)</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="avatar">Profile Photo</label><br />
+            <input id="avatar" name="avatar" type="file" accept=".jpg,.jpeg,.png,.webp" />
+          </p>
+
+          <p>
+            <label for="bio">Short Bio</label><br />
+            <textarea id="bio" name="bio" rows="4" cols="40" placeholder="Tell us a bit about yourself" maxlength="300"></textarea>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>3) Preferences</legend>
+
+          <p>
+            <label for="plan">Choose a Plan <strong>*</strong></label><br />
+            <select id="plan" name="plan" required>
+              <option value="">Select a plan</option>
+              <option value="starter">Starter (Free)</option>
+              <option value="pro">Pro ($19)</option>
+              <option value="team">Team ($49)</option>
+            </select>
+          </p>
+
+          <p>
+            <span id="notify-label">Notifications</span><br />
+            <label>
+              <input type="checkbox" name="notify-email" value="email" checked />
+              Email updates
+            </label>
+            <label>
+              <input type="checkbox" name="notify-sms" value="sms" />
+              SMS alerts
+            </label>
+          </p>
+
+          <p>
+            <span>Theme</span><br />
+            <label>
+              <input type="radio" name="theme" value="light" required />
+              Light
+            </label>
+            <label>
+              <input type="radio" name="theme" value="dark" />
+              Dark
+            </label>
+            <label>
+              <input type="radio" name="theme" value="system" />
+              System
+            </label>
+          </p>
+
+          <p>
+            <label for="color">Accent Color</label><br />
+            <input id="color" name="color" type="color" value="#3a86ff" />
+          </p>
+
+          <p>
+            <label for="storage">Storage Needed (GB)</label><br />
+            <input id="storage" name="storage" type="number" min="5" max="1000" step="5" placeholder="e.g., 50" />
+          </p>
+
+          <p>
+            <label for="satisfaction">Satisfaction (1–10)</label><br />
+            <input id="satisfaction" name="satisfaction" type="range" min="1" max="10" step="1" value="7" />
+          </p>
+
+          <p>
+            <label for="country">Country</label><br />
+            <input id="country" name="country" list="country-list" placeholder="Start typing..." autocomplete="country" />
+            <datalist id="country-list">
+              <option value="Ethiopia"></option>
+              <option value="Kenya"></option>
+              <option value="Nigeria"></option>
+              <option value="United Kingdom"></option>
+              <option value="United States"></option>
+            </datalist>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>4) Agreements &amp; Submit</legend>
+
+          <p>
+            <label for="tos">Terms &amp; Conditions <strong>*</strong></label><br />
+            <textarea id="tos" rows="4" cols="50" readonly>
+By signing up, you agree to our Terms and Conditions and Privacy Policy.
+            </textarea>
+          </p>
+
+          <p>
+            <label>
+              <input type="checkbox" name="agree" required />
+              I agree to the Terms &amp; Conditions
+            </label>
+          </p>
+
+          <p>
+            <button type="submit">Create Account</button>
+            <button type="reset">Reset</button>
+          </p>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Dagmawit Bekele | <a href="#overview">Back to top</a></p>
+  </footer>
+</body>
+</html>
